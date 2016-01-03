@@ -9,6 +9,8 @@ Supports the following Map methods:
 * `get`
 * `set`
 
+**All other Map methods & properties, including iterators, are not catered for at present.**
+
 Signature for all methods is the same as for Map, except that those accepting arguments accept a variable number of keys. Thus where Map method signatures would be:
 
 ```javascript
