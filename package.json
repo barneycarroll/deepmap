@@ -2,7 +2,8 @@
   "name": "deepmap",
   "version": "0.1.0",
   "description": "Maps with variadic key input",
-  "main": "deepmap.js",
+  "main:next": "deepmap.es7.js",
+  "main": "deepmap.es7.js",
   "scripts": {
     "test": "babel-node tests.js | faucet"
   },
