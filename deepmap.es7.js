@@ -4,7 +4,7 @@ const root   = new WeakMap()
 const leaves = new Map()
 
 export class DeepMap {
-	constructor( ...input ){
+	constructor( input ){
 		input.forEach( this.set )
 
 		root.set( this, new Map() )
