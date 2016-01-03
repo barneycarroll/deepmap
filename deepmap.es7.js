@@ -26,8 +26,14 @@ export class DeepMap {
 	delete( ...keys ){
 		let branch  = root.get( this )
 
-		for( let key of keys )
-			branch = branch.get( key )
+		for( let key of keys ){
+			if( branch.has( key ) ){
+				branch = branch.get( key )
+			}
+			else {
+				return false
+			}
+		}
 
 		return leaves.delete( branch )
 	}
