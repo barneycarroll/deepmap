@@ -1,6 +1,6 @@
 {
   "name": "deepmap",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Maps with variadic key input",
   "jsnext:main": "deepmap.es6.js",
   "main": "deepmap.es3.js",
