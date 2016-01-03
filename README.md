@@ -1,8 +1,6 @@
 # deepmap
 Maps with multiple keys per value
 
-Depends on ES6 WeakMap & Map, and ES7 bind operator support. This can be achieved with [Babel](babeljs.io) using [`es2015`](https://www.npmjs.com/package/babel-preset-es2015) and [`stage-0`](https://www.npmjs.com/package/babel-preset-stage-0) presets.
-
 Supports the following Map methods:
 
 * `clear`
