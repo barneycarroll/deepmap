@@ -1,6 +1,6 @@
 {
   "name": "deepmap",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Maps with variadic key input",
   "main": "deepmap.js",
   "scripts": {
