@@ -7,7 +7,7 @@ const deepClear = deepMap => {
 	if( leaves.has( deepMap ) )
 		leaves.delete( deepMap )
 
-	for( let [, map] of deepMap )
+	for( let map of deepMap.values() )
 		deepClear( map )
 
 	return deepMap.clear()
@@ -15,8 +15,9 @@ const deepClear = deepMap => {
 
 
 export class DeepMap {
-	constructor( input ){
-		input.forEach( this.set )
+	constructor( entries ){
+		for( let entry of entries )
+			this.set( ...entry )
 
 		root.set( this, new Map() )
 	}

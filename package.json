@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "description": "Maps with variadic key input",
   "jsnext:main": "deepmap.es6.js",
-  "main": "deepmap.es6.js",
+  "main": "deepmap.es3.js",
   "scripts": {
-    "test": "babel-node tests.js | faucet"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,6 @@
   },
   "keywords": [
     "map",
-    "weakmap",
     "deep",
     "variadic",
     "multiple",
