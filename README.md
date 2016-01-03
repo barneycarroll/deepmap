@@ -1,6 +1,8 @@
 # deepmap
 Maps with variadic key input
 
+Depends on ES6 WeakMap & Map, and ES7 bind operator support. This can be achieved with [Babel](babeljs.io) using [`es2015`](https://www.npmjs.com/package/babel-preset-es2015) and [`stage-0`](https://www.npmjs.com/package/babel-preset-stage-0) presets.
+
 Supports the following Map methods:
 
 * `clear`
@@ -9,7 +11,7 @@ Supports the following Map methods:
 * `get`
 * `set`
 
-**All other Map methods & properties, including iterators, are not catered for at present.**
+**All other Map methods & properties, including well-known symbols and coercion values, are not catered for at present.**
 
 Signature for all methods is the same as for Map, except that those accepting arguments accept a variable number of keys. Thus where Map method signatures would be:
 
