@@ -3,6 +3,17 @@ import give from 'xet'
 const root   = new WeakMap()
 const leaves = new Map()
 
+const deepClear = deepMap => {
+	if( leaves.has( deepMap ) )
+		leaves.delete( deepMap )
+
+	for( let [, map] of deepMap )
+		deepClear( map )
+
+	return deepMap.clear()
+}
+
+
 export class DeepMap {
 	constructor( input ){
 		input.forEach( this.set )
@@ -11,19 +22,10 @@ export class DeepMap {
 	}
 
 	clear(){
-		root.get( this )::( function wipe(){
-			if( leaves.has( this ) )
-				leaves.delete( this )
-
-			this.values().forEach( map => map::wipe() )
-
-			this.clear()
-		} )
-
-		return this
+		return deepClear( this )
 	}
 
-	delete( ...keys ){
+	delete( keys ){
 		let branch  = root.get( this )
 
 		for( let key of keys ){
@@ -38,7 +40,7 @@ export class DeepMap {
 		return leaves.delete( branch )
 	}
 
-	has( ...keys ){
+	has( keys ){
 		let branch  = root.get( this )
 
 		for( let key of keys ){
@@ -53,7 +55,7 @@ export class DeepMap {
 		return leaves.has( branch )
 	}
 
-	get( ...keys ){
+	get( keys ){
 		let branch  = root.get( this )
 
 		for( let key of keys )
@@ -62,14 +64,11 @@ export class DeepMap {
 		return leaves.get( branch )
 	}
 
-	set( ...input ){
-		const value = input.pop()
-		const keys  = input
-
+	set( keys, value ){
 		let branch  = root.get( this )
 
 		for( let key of keys )
-			branch = branch::give( key, () => new Map() )
+			branch = give.call( branch, key, () => new Map() )
 
 		leaves.set( branch, value )
 
