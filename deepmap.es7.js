@@ -1,7 +1,7 @@
 import give from 'xet'
 
 const root   = new WeakMap()
-const leaves = new WeakMap()
+const leaves = new Map()
 
 export class DeepMap {
 	constructor( ...input ){
@@ -12,10 +12,15 @@ export class DeepMap {
 
 	clear(){
 		root.get( this )::( function wipe(){
+			if( leaves.has( this ) )
+				leaves.delete( this )
+
 			this.values().forEach( map => map::wipe() )
 
 			this.clear()
 		} )
+
+		return this
 	}
 
 	delete( ...keys ){
@@ -39,7 +44,7 @@ export class DeepMap {
 			}
 		}
 
-		return true
+		return leaves.has( branch )
 	}
 
 	get( ...keys ){
